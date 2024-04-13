@@ -12,6 +12,8 @@
 #include "driver/gpio.h"
 #include <stdio.h>
 #include <stdbool.h>
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
 
 //---------------------------------- MACROS -----------------------------------
 #define GPIO_BIT_MASK(X) ((1ULL << (X)))
@@ -96,6 +98,16 @@ esp_err_t led_off(led_t led)
     return esp_err;
 }
 
-//---------------------------- PRIVATE FUNCTIONS ------------------------------
+void led_event_signal(led_t led){
 
+    for(int i = 0; i <= 5; i++){
+        led_on(led);
+        vTaskDelay(800U / portTICK_PERIOD_MS);
+        led_off(led);
+        vTaskDelay(200U / portTICK_PERIOD_MS);
+    }
+}
+
+//---------------------------- PRIVATE FUNCTIONS ------------------------------
+    
 //---------------------------- INTERRUPT HANDLERS -----------------------------
