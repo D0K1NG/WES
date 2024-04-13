@@ -57,7 +57,16 @@ esp_err_t led_on(led_t led);
  *
  * @return esp_err_t ESP_OK on success, fail otherwise.
  */
+
 esp_err_t led_off(led_t led);
+
+/**
+ * @brief The function signlals an event by blinking 5 times.
+ *
+ * @param [in] led LED instance (e.g. LED_BLUE).
+ *
+ * @return esp_err_t ESP_OK on success, fail otherwise.
+ */
 
 void led_event_signal(led_t led);
 

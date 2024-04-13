@@ -11,6 +11,7 @@
 //--------------------------------- INCLUDES ----------------------------------
 #include "user_interface.h"
 #include "led.h"
+#include "buzzer.h"
 #include "gui.h"
 #include "gui_app.h"
 #include "freertos/FreeRTOS.h"
@@ -68,7 +69,8 @@ static void _user_interface_task(void *p_parameter)
         {
             printf("GUI event received %d\n", gui_event);
             led_event_signal(LED_BLUE);
-            
+            //morse_SOS_buzzer();
+
             switch(gui_event)
             {
                 case GUI_APP_EVENT_BUTTON_LED_ON_PRESSED:
