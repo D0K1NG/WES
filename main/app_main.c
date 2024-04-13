@@ -26,6 +26,7 @@ void app_main(void)
 {
     setupWifi();
     user_interface_init();
+   
 }
 
 //---------------------------- PRIVATE FUNCTIONS ------------------------------

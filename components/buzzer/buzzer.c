@@ -65,13 +65,14 @@ void sound(int freq, int duration) {
 	ledc_conf.channel    = LEDC_CHANNEL_0;
 	ledc_conf.intr_type  = LEDC_INTR_DISABLE;
 	ledc_conf.timer_sel  = LEDC_TIMER_0;
-	ledc_conf.duty       = 0x7FFF; // 50%=0x3FFF, 100%=0x7FFF for 15 Bit
-	                            // 50%=0x01FF, 100%=0x03FF for 10 Bit
+	ledc_conf.duty       = (1 << LEDC_TIMER_10_BIT) / 2; 
+	                 
 	ledc_channel_config(&ledc_conf);
 
 	// start
-    ledc_set_duty(GPIO_OUTPUT_SPEED, LEDC_CHANNEL_0, 0x7FFF); // 100% duty - play here for your speaker or buzzer
+    ledc_set_duty(GPIO_OUTPUT_SPEED, LEDC_CHANNEL_0, ledc_conf.duty); // 100% duty - play here for your speaker or buzzer
     ledc_update_duty(GPIO_OUTPUT_SPEED, LEDC_CHANNEL_0);
+
 	vTaskDelay(duration/portTICK_PERIOD_MS);
 	// stop
     ledc_set_duty(GPIO_OUTPUT_SPEED, LEDC_CHANNEL_0, 0);
@@ -81,24 +82,25 @@ void sound(int freq, int duration) {
 }
 
 void morse_SOS_buzzer(){
-    sound(a, 1000);
-    vTaskDelay(1000U/portTICK_PERIOD_MS);
-    sound(a, 1000);
-    vTaskDelay(1000U/portTICK_PERIOD_MS);
-    sound(a, 1000);
-    vTaskDelay(3000U/portTICK_PERIOD_MS);
+    sound(a, 500);
+    vTaskDelay(500U/portTICK_PERIOD_MS);
+    sound(a, 500);
+    vTaskDelay(500/portTICK_PERIOD_MS);
+    sound(a, 500);
+    vTaskDelay(1500U/portTICK_PERIOD_MS);
 
-    sound(a, 3000);
-    vTaskDelay(1000U/portTICK_PERIOD_MS);
-    sound(a, 3000);
-    vTaskDelay(1000U/portTICK_PERIOD_MS);
-    sound(a, 3000);
-    vTaskDelay(3000U/portTICK_PERIOD_MS);
+    sound(a, 1500);
+    vTaskDelay(500/portTICK_PERIOD_MS);
+    sound(a, 1500);
+    vTaskDelay(500/portTICK_PERIOD_MS);
+    sound(a, 1500);
+    vTaskDelay(1500/portTICK_PERIOD_MS);
 
-    sound(a, 1000);
-    vTaskDelay(1000U/portTICK_PERIOD_MS);
-    sound(a, 1000);
-    vTaskDelay(1000U/portTICK_PERIOD_MS);
-    sound(a, 1000);
-    
+    sound(a, 500);
+    vTaskDelay(500U/portTICK_PERIOD_MS);
+    sound(a, 500);
+    vTaskDelay(500/portTICK_PERIOD_MS);
+    sound(a, 500);
+    vTaskDelay(1500/portTICK_PERIOD_MS);
+   
 }

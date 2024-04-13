@@ -68,9 +68,7 @@ static void _user_interface_task(void *p_parameter)
         if((p_user_interface_queue != NULL) && (xQueueReceive(p_user_interface_queue, &gui_event, portMAX_DELAY) == pdTRUE))
         {
             printf("GUI event received %d\n", gui_event);
-            led_event_signal(LED_BLUE);
-            //morse_SOS_buzzer();
-
+            
             switch(gui_event)
             {
                 case GUI_APP_EVENT_BUTTON_LED_ON_PRESSED:
