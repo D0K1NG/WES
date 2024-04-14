@@ -10,7 +10,6 @@
 
 //--------------------------------- INCLUDES ----------------------------------
 #include "user_interface.h"
-#include "led.h"
 #include "gui.h"
 #include "gui_app.h"
 #include "freertos/FreeRTOS.h"
@@ -39,7 +38,7 @@ QueueHandle_t p_user_interface_queue = NULL;
 //------------------------------ PUBLIC FUNCTIONS -----------------------------
 void user_interface_init(void)
 {
-    led_init(LED_BLUE);
+    
     gui_init();
 
     p_user_interface_queue = xQueueCreate(USER_INTERFACE_QUEUE_SIZE, sizeof(gui_app_event_t));
@@ -68,19 +67,7 @@ static void _user_interface_task(void *p_parameter)
         {
             printf("GUI event received %d\n", gui_event);
 
-            switch(gui_event)
-            {
-                case GUI_APP_EVENT_BUTTON_LED_ON_PRESSED:
-                    led_on(LED_BLUE);
-                    break;
-
-                case GUI_APP_EVENT_BUTTON_LED_OFF_PRESSED:
-                    led_off(LED_BLUE);
-                    break;
-                default:
-                    printf("Uknown GUI event\n");
-                    break;
-            }
+            
         }
     }
 }

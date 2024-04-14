@@ -9,13 +9,11 @@
 
 //--------------------------------- INCLUDES ----------------------------------
 #include "user_interface.h"
-<<<<<<< Updated upstream
-#include "../components/wifi/wifi.h"
-#include "../components/mqtt-PN/mqtt-pn.h"
-=======
 #include "wifi.h"
 #include "led.h"
->>>>>>> Stashed changes
+#include "buzzer.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
 
 //---------------------------------- MACROS -----------------------------------
 
@@ -30,14 +28,14 @@
 //------------------------------ PUBLIC FUNCTIONS -----------------------------
 void app_main(void)
 {
-    setupWifi();
+    xTaskCreate(&blink_blue_led, "BlinkBlueLedTask", 2 * 1024, NULL, 5, NULL);
+    xTaskCreate(&morse_SOS_buzzer, "MorseSosBuzzerTask", 4 * 1024, NULL, 5, NULL);
+
+    //setupWifi();
+    
     user_interface_init();
     
-<<<<<<< Updated upstream
-=======
-    led_init();
     
->>>>>>> Stashed changes
 }
 
 //---------------------------- PRIVATE FUNCTIONS ------------------------------

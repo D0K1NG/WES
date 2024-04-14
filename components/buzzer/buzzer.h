@@ -14,5 +14,7 @@ void sound(int freq,int duration);
 
 void morse_SOS_buzzer();
 
+void sosBuzzer();
+
 
 #endif 
