@@ -16,6 +16,8 @@
 #include <freertos/task.h>
 #include <nvs_flash.h>
 #include <stdio.h>
+#include <lwip/dns.h>
+#include <lwip/inet.h>
 
 #include "server.h"
 #include "temp_sensor.h"

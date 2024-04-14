@@ -16,4 +16,5 @@ typedef struct {
 
 void publish_sensor_data(esp_mqtt_client_handle_t client, SensorData *data);
 void some_function();
+esp_event_handler_t kurac(esp_mqtt_client_handle_t client, SensorData *data);
 

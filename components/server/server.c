@@ -36,10 +36,11 @@ void publish_sensor_data(esp_mqtt_client_handle_t client, SensorData *data) {
 }
 
 
-void kurac()
+esp_event_handler_t kurac(esp_mqtt_client_handle_t client, SensorData *data)
 {
-
+    return NULL;
 }
+
 void some_function() {
     printf("esagluk: in some_function\n");
     // Initialize your MQTT client as before...
@@ -61,9 +62,3 @@ void some_function() {
     printf("esagluk: b4 publish\n");
     publish_sensor_data(client, &data);
 }
-
-    int temp;
-    float hum;
-    float acc_x;
-    float acc_y;
-    float acc_z;
