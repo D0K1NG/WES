@@ -9,7 +9,8 @@
 
 //--------------------------------- INCLUDES ----------------------------------
 #include "user_interface.h"
-#include "wifi.h"
+#include "../components/wifi/wifi.h"
+#include "../components/mqtt-PN/mqtt-pn.h"
 
 //---------------------------------- MACROS -----------------------------------
 
@@ -26,6 +27,7 @@ void app_main(void)
 {
     setupWifi();
     user_interface_init();
+    
 }
 
 //---------------------------- PRIVATE FUNCTIONS ------------------------------
